@@ -15,6 +15,6 @@ namespace WebApplication1.BibliotecaContextt
 
         public virtual DbSet<Estados> Estados { get; set; }
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(@"Server=DESKTOP-JB3HNU9\SQLEXPRESS;Database=BIBLIOTECA; User ID=sa; Password=156145502; Trusted_Connection=true;Encrypt=False;");
+        => optionsBuilder.UseSqlServer(@"Server=DESKTOP-2FH9K0E\SQLEXPRESS;Database=BIBLIOTECA; User ID=sa; Password=156145502; Trusted_Connection=true;Encrypt=False;");
     }
 }

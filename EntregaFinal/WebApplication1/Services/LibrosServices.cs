@@ -25,12 +25,7 @@ namespace WebApplication1.Services
             pc.SaveChanges();
             return libro;
         }
-         public Libros GetLibroPorId(int id)
-    {
-        BibliotecaContext tc = new BibliotecaContext();
-       return tc.Libros.FirstOrDefault(Libros=>Libros.Id ==id);
-        
-    }
+       
 
     }
 }

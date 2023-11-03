@@ -9,10 +9,11 @@ using WebApplication1.Services;
 namespace WebApplication1.Controllers
 {
     [ApiController]
-    [Route("/Api")]
+    [Route("/api/estados")]
     public class EstadosControllers : ControllerBase
     {
         public readonly EstadosServices estadosservices;
+
 
         public EstadosControllers(EstadosServices services)
         {
@@ -29,11 +30,36 @@ namespace WebApplication1.Controllers
 
         public IActionResult CrearEstados(Estados estado)
         {
-           Estados EstadosCreados = estadosservices.CrearLibros(estado);
+            Estados EstadosCreados = estadosservices.CrearEstados(estado);
             int Id = EstadosCreados.Id;
             return CreatedAtAction(nameof(GetEstados), Id, estado);
-
         }
-        
+
+        [HttpDelete("{id}")]
+        public IActionResult EliminarEstado(int id)
+        {
+            var estado = estadosservices.EliminarEstados(id);
+
+            if (estado == null)
+            {
+                return NotFound(); // no se encontro el estado
+            }
+
+            return NoContent(); // 204 No Content para que muestre si lo borro con exito
+        }
+
+        [HttpGet("{estadoid}")]
+        public IActionResult GetEstadoPorId(int estadoid)
+        {
+            var estado = estadosservices.GetEstadoPorId(estadoid);
+
+            if (estado == null)
+            {
+                return NotFound(); // Estado no encontrado
+            }
+
+            return Ok(estado);
+        }
+
     }
 }

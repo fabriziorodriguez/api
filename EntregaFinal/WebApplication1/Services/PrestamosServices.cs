@@ -11,9 +11,16 @@ namespace WebApplication1.Services
     {
         BibliotecaContext bc = new();
 
-        public List<Prestamos>GetPrestamos()
+        public List<Prestamos> GetPrestamos()
         {
             return bc.Prestamos.ToList();
         }
+
+        public Prestamos GetPrestamoPorId(int id)
+        {
+            BibliotecaContext bc = new BibliotecaContext();
+            return bc.Prestamos.FirstOrDefault(p => p.Id == id);
+        }
+
     }
 }

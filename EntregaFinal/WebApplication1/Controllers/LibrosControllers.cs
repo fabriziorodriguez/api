@@ -10,10 +10,11 @@ using WebApplication1.Services;
 namespace WebApplication1.Controllers
 {
     [ApiController]
-    [Route("/Libros")]
+    [Route("/api/libros")]
     public class LibrosControllers : ControllerBase
     {
         public readonly LibrosServices librosServices;
+        
 
         public LibrosControllers(LibrosServices services)
         {
@@ -46,21 +47,6 @@ namespace WebApplication1.Controllers
             return CreatedAtAction(nameof(GetLibros), Id, libro);
             
         }
-
-        [HttpGet("{id}")]
-        public IActionResult GetLibroPorId(int id)
-        {
-           
-            Libros libro = librosServices.GetLibroPorId(id);
-
-            if (libro == null)
-            {
-                return NotFound(); // 404 si no esta el libro.
-            }
-
-            return Ok(libro); 
-        }
-
 
 
     }
